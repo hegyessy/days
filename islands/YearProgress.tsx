@@ -47,8 +47,10 @@ export default function YearProgress() {
   return (
     <div class="p-4 text-white flex items-center flex-col">
       <hgroup class="mb-2">
-        <h1 class="text-black text-lg font-bold dark:text-white">{today}</h1>
-        <p class="text-neutral-500">
+        <h1 class="text-black text-lg font-bold dark:text-white leading-tight">
+          {today}
+        </h1>
+        <p class="text-neutral-500 leading-none">
           Day {dayCount} of {daysInTheYear}
         </p>
       </hgroup>

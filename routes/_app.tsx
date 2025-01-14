@@ -24,9 +24,14 @@ export default function App({ Component }: PageProps) {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <title>Days</title>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cloud.typography.com/6901556/6994032/css/fonts.css"
+        />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body class="bg-neutral-100 dark:bg-neutral-950 text-center">
+      <body class="font-mono bg-neutral-100 dark:bg-neutral-950 text-center">
         <Component />
       </body>
     </html>
