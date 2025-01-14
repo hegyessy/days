@@ -32,7 +32,7 @@ export default function YearProgress() {
         tw = "animate-pulse bg-orange-400";
         break;
       default:
-        tw = "bg-neutral-800";
+        tw = "bg-neutral-300 dark:bg-neutral-800";
         break;
     }
 
@@ -47,8 +47,10 @@ export default function YearProgress() {
   return (
     <div class="p-4 text-white flex items-center flex-col">
       <hgroup class="mb-2">
-        <h1 class="text-white text-lg font-bold">{today}</h1>
-        <p class="text-neutral-300">Day {dayCount} of {daysInTheYear}</p>
+        <h1 class="text-black text-lg font-bold dark:text-white">{today}</h1>
+        <p class="text-neutral-500">
+          Day {dayCount} of {daysInTheYear}
+        </p>
       </hgroup>
       <ul class="my-2 grid grid-cols-7 gap-1 w-[80%] max-w-[700px]">
         <div class="text-xs text-neutral-500">Mon</div>
