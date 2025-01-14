@@ -4,28 +4,39 @@ export default function YearProgress() {
     ? 366
     : 365;
 
-  const today = new Date().toDateString().toString();
+  const today = new Date().toDateString();
 
   const getDayOfYear = function () {
     const today = new Date();
     const startOfYear = new Date(today.getFullYear(), 0, 1);
-    const diff = today.getTime() - startOfYear.getTime();
-    const dayNumber = Math.round(diff / (24 * 60 * 60 * 1000));
+    const dayNumber = Math.trunc(
+      (today.getTime() - startOfYear.getTime() + 86400000) / 86400000,
+    );
+
     return dayNumber;
   };
 
   const dayCount = getDayOfYear();
 
   const Day = function ({ index }: { index: number }) {
-    return (
-      <li
-        data-day-count={index}
-        class={`h-[4px] ${
-          index > dayCount || index < 0 ? "bg-neutral-800" : "bg-green-500"
-        } ${index === dayCount ? "animate-pulse bg-orange-400" : ""}`}
-      >
-      </li>
-    );
+    let tw;
+
+    switch (true) {
+      case index < dayCount && index > 0:
+        tw = "bg-green-500";
+        break;
+      case index < 0:
+        tw = "bg-transparent";
+        break;
+      case index === dayCount:
+        tw = "animate-pulse bg-orange-400";
+        break;
+      default:
+        tw = "bg-neutral-800";
+        break;
+    }
+
+    return <li data-day-count={index} class={`h-1 ${tw}`}></li>;
   };
 
   const daysInTheYearArray = Array.from(
@@ -40,6 +51,13 @@ export default function YearProgress() {
         <p class="text-neutral-300">Day {dayCount} of {daysInTheYear}</p>
       </hgroup>
       <ul class="my-2 grid grid-cols-7 gap-1 w-[80%] max-w-[700px]">
+        <div class="text-xs text-neutral-500">Mon</div>
+        <div class="text-xs text-neutral-500">Tue</div>
+        <div class="text-xs text-neutral-500">Wed</div>
+        <div class="text-xs text-neutral-500">Thu</div>
+        <div class="text-xs text-neutral-500">Fri</div>
+        <div class="text-xs text-neutral-500">Sat</div>
+        <div class="text-xs text-neutral-500">Sun</div>
         <Day index={-2} />
         <Day index={-1} />
         {daysInTheYearArray}
