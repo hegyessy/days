@@ -5,6 +5,16 @@ export default function App({ Component }: PageProps) {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="theme-color"
+          content="rgb(245 245 245)"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="rgb(23 23 23)"
+          media="(prefers-color-scheme: dark)"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -31,7 +41,7 @@ export default function App({ Component }: PageProps) {
         />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body class="font-mono bg-neutral-100 dark:bg-neutral-950 text-center">
+      <body class="font-mono bg-neutral-100 dark:bg-neutral-900 text-center">
         <Component />
       </body>
     </html>
