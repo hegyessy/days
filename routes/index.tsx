@@ -18,7 +18,7 @@ export default function Home() {
     return (
       <li
         data-day-count={index}
-        class={`h-[8px] ${
+        class={`h-[4px] ${
           index > dayCount || index < 0 ? "bg-neutral-800" : "bg-white"
         } ${index === dayCount ? "animate-pulse" : ""}`}
       >
@@ -32,9 +32,9 @@ export default function Home() {
   );
 
   return (
-    <div class="p-8 text-white flex items-center flex-col">
-      <h1 class="text-white text-4xl font-bold mb-4">{currentYear}</h1>
-      <ul class="my-4 grid grid-cols-7 gap-1 w-[80%] max-w-[700px]">
+    <div class="p-4 text-white flex items-center flex-col">
+      <h1 class="text-white text-2xl font-bold mb-2">{currentYear}</h1>
+      <ul class="my-2 grid grid-cols-7 gap-1 w-[80%] max-w-[700px]">
         <Day index={-2} />
         <Day index={-1} />
         {daysInTheYearArray}
