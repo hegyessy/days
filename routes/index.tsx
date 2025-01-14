@@ -1,8 +1,10 @@
 export default function Home() {
   const currentYear = new Date().getFullYear();
   const daysInTheYear = new Date(currentYear, 1, 29).getMonth() === 1
-    ? 365
-    : 366;
+    ? 366
+    : 365;
+
+  const today = new Date().toDateString().toString();
 
   const getDayOfYear = function () {
     const today = new Date();
@@ -19,8 +21,8 @@ export default function Home() {
       <li
         data-day-count={index}
         class={`h-[4px] ${
-          index > dayCount || index < 0 ? "bg-neutral-800" : "bg-white"
-        } ${index === dayCount ? "animate-pulse" : ""}`}
+          index > dayCount || index < 0 ? "bg-neutral-800" : "bg-green-500"
+        } ${index === dayCount ? "animate-pulse bg-orange-400" : ""}`}
       >
       </li>
     );
@@ -33,7 +35,10 @@ export default function Home() {
 
   return (
     <div class="p-4 text-white flex items-center flex-col">
-      <h1 class="text-white text-2xl font-bold mb-2">{currentYear}</h1>
+      <hgroup class="mb-2">
+        <h1 class="text-white text-lg font-bold">{today}</h1>
+        <p class="text-neutral-300">Day {dayCount} of {daysInTheYear}</p>
+      </hgroup>
       <ul class="my-2 grid grid-cols-7 gap-1 w-[80%] max-w-[700px]">
         <Day index={-2} />
         <Day index={-1} />
