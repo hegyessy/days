@@ -4,13 +4,13 @@ export default function YearProgress() {
     ? 366
     : 365;
 
-  const today = new Date().toDateString();
+  const now = new Date().toDateString();
 
   const getDayOfYear = function () {
-    const today = new Date();
-    const startOfYear = new Date(today.getFullYear(), 0, 1);
+    const now = new Date();
+    const startOfYear = new Date(now.getFullYear(), 0, 1);
     const dayNumber = Math.trunc(
-      (today.getTime() - startOfYear.getTime() + 86400000) / 86400000,
+      (now.getTime() - startOfYear.getTime() + 86400000) / 86400000,
     );
 
     return dayNumber;
@@ -44,11 +44,19 @@ export default function YearProgress() {
     (_, i) => <Day index={i + 1} />,
   );
 
+  const daysFromPreviousYearArray = Array.from(
+    { length: (new Date(new Date().getFullYear(), 0, 1).getDay() - 1) },
+    (_, i) => <Day index={-1 - i} />,
+  );
+
   return (
-    <div class="p-4 text-white flex items-center flex-col">
+    <div
+      class="p-4 text-white flex items-center flex-col"
+      data-days-year={daysInTheYear}
+    >
       <hgroup class="mb-2">
         <h1 class="text-black text-lg font-bold dark:text-white leading-tight">
-          {today}
+          {now}
         </h1>
         <p class="text-neutral-500 leading-none">
           Day {dayCount} of {daysInTheYear}
@@ -62,8 +70,7 @@ export default function YearProgress() {
         <div class="text-xs text-neutral-500">Fri</div>
         <div class="text-xs text-neutral-500">Sat</div>
         <div class="text-xs text-neutral-500">Sun</div>
-        <Day index={-2} />
-        <Day index={-1} />
+        {daysFromPreviousYearArray}
         {daysInTheYearArray}
       </ul>
     </div>
