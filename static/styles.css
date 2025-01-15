@@ -7,3 +7,10 @@
     color-scheme: light dark;
   }
 }
+
+@layer components {
+  /* Style leap year day */
+  [data-days-year="366"] [data-day-count="60"] {
+    @apply bg-red-500;
+  }
+}
